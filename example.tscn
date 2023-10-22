@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq6ywoskdfp8k"]
+
+[ext_resource type="Script" path="res://Button.gd" id="1_yrm8g"]
+[ext_resource type="PackedScene" uid="uid://bbqc08sl2my5v" path="res://popup.tscn" id="2_j6nyj"]
+[ext_resource type="Script" path="res://Label.gd" id="3_42u2v"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -115.0
+offset_right = 100.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+script = ExtResource("1_yrm8g")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.172549, 0.172549, 0.172549, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Schwierigkeitsgrad ist: "
+script = ExtResource("3_42u2v")
+
+[node name="Popup" parent="." instance=ExtResource("2_j6nyj")]
+
+[connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_pressed"]
